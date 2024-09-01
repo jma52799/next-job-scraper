@@ -59,6 +59,9 @@ export default function Home() {
               <div className="flex flex-col space-y-4 mt-4">
                 <p>Fetches the first specified number of job records from the database</p>
                 <p>A successful request will return data in the format shown below:</p>
+                <p className="italic text-xs md:text-sm lg:text-base">
+                  E.g: GET api/jobs?results=5
+                </p>
                 <div className="bg-white text-black p-4 overflow-auto max-h-64 max-w-full border rounded">
                   <pre className="whitespace-pre-wrap">
                     {secondResponseIn} 
@@ -67,10 +70,8 @@ export default function Home() {
                 <p className="italic text-xs text-gray-500 mt-2">
                     Note: This is a default response that simulates what would be returned from the API. This is used because the actual API fetching within the application causes timeouts on Vercel.
                 </p>
+                <p>Note: If the number exceeds the total number of records, then all records are returned. </p>
                 <p className="italic text-xs md:text-sm lg:text-base">
-                  Note: If the number exceeds the total number of records, then all records are returned. 
-                  <br />
-                  <br />
                   E.g: GET api/jobs?results=500
                 </p>
                 <div className="bg-white text-black p-4 overflow-auto max-h-64 max-w-full border rounded">
