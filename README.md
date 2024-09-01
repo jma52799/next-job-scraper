@@ -22,7 +22,7 @@ Ensure you have the following installed:
 - Docker
 - Typescript
 
-## Getting Started
+## Getting Started Locally
 
 1. __Clone the repo:__ `git clone https://github.com/jma52799/job-scraper.git`
 2. __Install libraries:__ `npm install`
@@ -58,3 +58,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 - **POST /api/cron/scrape**
 ![Scrape Success Image](public/scrape.png)
+
+## Visit the application deployed on Vercel
+
+ [Link to application](https://next-job-scraper.vercel.app/)
