@@ -3,6 +3,8 @@ import { connectToDatabase } from "@/lib/mongoose";
 import Job from "@/lib/models/job.model";
 import { NO_CACHE_HEADERS } from "@/lib/constants";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: Request) {
     try {
         await connectToDatabase();
