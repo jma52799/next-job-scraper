@@ -59,7 +59,7 @@ export default function Home() {
       <div className="w-full max-w-md lg:max-w-lg border-b border-white pb-2 flex justify-between items-center">
         <p className="text-left text-white text-base md:text-lg lg:text-xl">Job Scraper APIs Usage</p>
         <a 
-          href="https://github.com/your-repo" 
+          href="https://github.com/jma52799/next-job-scraper" 
           className="flex items-center text-white"
           target="_blank"
           rel="noopener noreferrer"
@@ -107,7 +107,7 @@ export default function Home() {
             </AccordionTrigger>
             <AccordionContent className="text-sm md:text-base lg:text-lg">
               <div className="flex flex-col space-y-4 mt-4">
-                <p>Fetches a specified number of job records from the database</p>
+                <p>Fetches the first specified number of job records from the database</p>
                 <p className="italic text-xs md:text-sm lg:text-base">
                   If the number exceeds the total number of records, then all records are returned
                 </p>
