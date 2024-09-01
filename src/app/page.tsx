@@ -8,52 +8,12 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import Spinner from "@/components/spinner";
+import firstResponse from "@/components/first-response";
+import secondResponseIn from "@/components/second-response-in";
+import secondResponseOut from "@/components/second-response-out";
 import { FaGithub } from "react-icons/fa";
 
 export default function Home() {
-  const [firstIsLoading, setFirstIsLoading] = useState(false);
-  const [secondIsLoading, setSecondIsLoading] = useState(false);
-  const [resultsCount, setResultsCount] = useState("");
-  const [firstResponse, setFirstResponse] = useState<string | null>(null);
-  const [secondResponse, setSecondResponse] = useState<string | null>(null);
-
-  const handleFetchAllJobs = async () => {
-    setFirstIsLoading(true);
-    setFirstResponse(null); 
-    try {
-      const response = await fetch("/api/jobs");
-      if (!response.ok) {
-        throw new Error("Failed to fetch jobs");
-      }
-      const data = await response.json();
-      setFirstResponse(JSON.stringify(data, null, 2)); 
-    } catch (error: any) {
-      setFirstResponse(error.message); 
-      console.error(error);
-    } finally {
-      setFirstIsLoading(false);
-    }
-  };
-
-  const handleFetchJobs = async () => {
-    setSecondIsLoading(true);
-    setSecondResponse(null); 
-    try {
-      const response = await fetch(`/api/jobs?results=${resultsCount}`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch results");
-      }
-      const data = await response.json();
-      setSecondResponse(JSON.stringify(data, null, 2)); 
-    } catch (error:any) {
-      setSecondResponse(error.message); 
-      console.error(error);
-    } finally {
-      setSecondIsLoading(false);
-    }
-  };
-
   return (
     <main className="flex flex-col min-h-screen items-center justify-center p-4">
       <div className="w-full max-w-md lg:max-w-lg border-b border-white pb-2 flex justify-between items-center">
@@ -78,25 +38,15 @@ export default function Home() {
             <AccordionContent className="text-sm md:text-base lg:text-lg">
               <div className="flex flex-col space-y-4 mt-4">
                 <p>Fetches all job records from the database</p>
-                {firstIsLoading && (
-                  <div className="py-4 flex justify-center">
-                    <Spinner />
-                  </div>
-                )}
-                {!firstIsLoading && firstResponse && (
-                  <div className="bg-white text-black p-4 overflow-auto max-h-64 max-w-full border rounded">
-                    <pre className="whitespace-pre-wrap">
-                      {firstResponse}
-                    </pre>
-                  </div>
-                )}
-                <button
-                  onClick={handleFetchAllJobs}
-                  className={`bg-blue-600 text-white px-4 py-2 rounded focus:outline-none ${firstIsLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-500'}`}
-                  disabled={firstIsLoading}
-                >
-                  Fetch Jobs
-                </button>
+                <p>A successful request will return data in the format shown below:</p>
+                <div className="bg-white text-black p-4 overflow-auto max-h-64 max-w-full border rounded">
+                  <pre className="whitespace-pre-wrap">
+                    {firstResponse} 
+                  </pre>
+                </div>
+                <p className="italic text-xs text-gray-500 mt-2">
+                    Note: This is a default response that simulates what would be returned from the API. This is used because the actual API fetching within the application causes timeouts on Vercel.
+                </p>
               </div>
             </AccordionContent>
           </AccordionItem>
@@ -108,35 +58,29 @@ export default function Home() {
             <AccordionContent className="text-sm md:text-base lg:text-lg">
               <div className="flex flex-col space-y-4 mt-4">
                 <p>Fetches the first specified number of job records from the database</p>
-                <p className="italic text-xs md:text-sm lg:text-base">
-                  If the number exceeds the total number of records, then all records are returned
+                <p>A successful request will return data in the format shown below:</p>
+                <div className="bg-white text-black p-4 overflow-auto max-h-64 max-w-full border rounded">
+                  <pre className="whitespace-pre-wrap">
+                    {secondResponseIn} 
+                  </pre>
+                </div>
+                <p className="italic text-xs text-gray-500 mt-2">
+                    Note: This is a default response that simulates what would be returned from the API. This is used because the actual API fetching within the application causes timeouts on Vercel.
                 </p>
-                <input
-                  type="number"
-                  placeholder="Enter a number"
-                  value={resultsCount}
-                  onChange={(e) => setResultsCount(e.target.value)}
-                  className="p-2 border rounded text-black"
-                />
-                {secondIsLoading && (
-                  <div className="py-4 flex justify-center">
-                    <Spinner />
-                  </div>
-                )}
-                {!secondIsLoading && secondResponse && (
-                  <div className="bg-white text-black p-4 overflow-auto max-h-64 max-w-full border rounded">
-                    <pre className="whitespace-pre-wrap">
-                      {secondResponse}
-                    </pre>
-                  </div>
-                )}
-                <button
-                  onClick={handleFetchJobs}
-                  className={`bg-blue-600 text-white px-4 py-2 rounded focus:outline-none ${secondIsLoading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-500'}`}
-                  disabled={secondIsLoading}
-                >
-                  Fetch Jobs
-                </button>
+                <p className="italic text-xs md:text-sm lg:text-base">
+                  Note: If the number exceeds the total number of records, then all records are returned. 
+                  <br />
+                  <br />
+                  E.g: GET api/jobs?results=500
+                </p>
+                <div className="bg-white text-black p-4 overflow-auto max-h-64 max-w-full border rounded">
+                  <pre className="whitespace-pre-wrap">
+                    {secondResponseOut} 
+                  </pre>
+                </div>
+                <p className="italic text-xs text-gray-500 mt-2">
+                    Note: This is a default response that simulates what would be returned from the API. This is used because the actual API fetching within the application causes timeouts on Vercel.
+                </p>
               </div>
             </AccordionContent>
           </AccordionItem>

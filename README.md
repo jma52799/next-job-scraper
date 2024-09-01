@@ -44,7 +44,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## API Endpoints
 
 - **GET /api/jobs**: Returns all job records from the database.
-- **GET /api/jobs?results={INTEGER}**: Returns the specified number of records. If the requested amount exceeds the number of records in the database, all records are returned.
+- **GET /api/jobs?results={INTEGER}**: Returns the first specified number of records. If the requested amount exceeds the number of records in the database, all records are returned.
    - For example, to retrieve 10 records: **GET /jobs?results=10**
 - **POST /api/cron/scrape**: Scrapes job listings from LinkedIn and stores them in the database (only if it's not a duplicate of an existing record).
 
