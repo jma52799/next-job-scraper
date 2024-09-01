@@ -6,8 +6,6 @@ import Job from  "@/lib/models/job.model";
 import { NextResponse } from "next/server";
 import { baseURL, NO_CACHE_HEADERS } from "@/lib/constants";
 
-export const dynamic = 'force-dynamic';
-
 export async function POST() {
     try {
         connectToDatabase();
