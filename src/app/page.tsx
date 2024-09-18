@@ -45,7 +45,7 @@ export default function Home() {
                   </pre>
                 </div>
                 <p className="italic text-xs text-gray-500 mt-2">
-                    Note: This is a sample response that simulates what would be returned from the API. This is used because the actual API fetching within the application causes timeouts on Vercel.
+                    Note: This is a sample response that simulates what would be returned from the API. This is used because the actual API fetching causes timeouts in production mode on Vercel.
                 </p>
               </div>
             </AccordionContent>
@@ -68,7 +68,7 @@ export default function Home() {
                   </pre>
                 </div>
                 <p className="italic text-xs text-gray-500 mt-2">
-                    Note: This is a sample response that simulates what would be returned from the API. This is used because the actual API fetching within the application causes timeouts on Vercel.
+                    Note: This is a sample response that simulates what would be returned from the API. This is used because the actual API fetching causes timeouts in production mode on Vercel.
                 </p>
                 <p>Note: If the number exceeds the total number of records, then all records are returned. </p>
                 <p className="italic text-xs md:text-sm lg:text-base">
